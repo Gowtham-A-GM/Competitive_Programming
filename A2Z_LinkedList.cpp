@@ -62,8 +62,11 @@ int main() {
     vector<int> arr = {10, 20, 30, 40};
     Node* head = convertLL(arr);
     
-    // head = deleteHead(head);
-    // printLL(head);   
+    // Delete HEAD
+    head = deleteHead(head);
+    printLL(head);   
+
+    cout << 10;
     
     return 0;
 }
