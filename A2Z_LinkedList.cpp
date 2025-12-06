@@ -24,13 +24,6 @@ class Node{
     }
 };
 
-void printLL(Node* head){
-    Node* temp = head;
-    while(head){
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
-}
 
 Node* convertLL(vector<int>& arr){
     Node* head = new Node(arr[0]);
@@ -43,6 +36,14 @@ Node* convertLL(vector<int>& arr){
     }
 
     return head;
+}
+
+void printLL(Node* head){
+    Node* temp = head;
+    while(head){
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
 }
 
 Node* deleteHead(Node* head){
