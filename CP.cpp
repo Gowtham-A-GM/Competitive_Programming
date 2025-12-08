@@ -8,61 +8,48 @@ void setupIO() {
     #endif
 }
 
-class Node{
-    public:
-    int data;
-    Node* next;
 
-    Node(int data, Node* next){
-        this->data = data;
-        (*this).next = next;
-    }
+vector<bool> isPrime(int n) {
+vector<bool> allPrime(n + 1, true);
+    allPrime[0] = allPrime[1] = false;
 
-    Node(int data){
-        this->data = data;
-        this->next = nullptr;
+    for (int i = 2; i * i <= n; i++) {
+        if (allPrime[i]) {
+            for (int j = i * i; j <= n; j += i) {
+                allPrime[j] = false;
+            }
+        }
     }
-};
-
-void printLL(Node* head){
-    Node* temp = head;
-    while(head){
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
+    return allPrime;
 }
 
-Node* convertLL(vector<int>& arr){
-    Node* head = new Node(arr[0]);
-    Node* mover = head;
+int largestPrime(int n) {
+    vector<bool> allPrime = isPrime(n);
+    int ans = 0;
+    long long temp = 0;
+    for(int i=2; i<=n; i++){
+        if(allPrime[i]){
+            long long sum = temp + i;
 
-    for(int i=1; i<arr.size(); i++){
-        Node* temp = new Node(arr[i]);
-        mover->next = temp;
-        mover = temp;
+            if (sum <= n && allPrime[sum]) {
+                ans = sum;     
+            }
+
+            temp += i;
+            if (temp > n) break;
+            
+        }
     }
 
-    return head;
-}
-
-Node* deleteHead(Node* head){
-    if(head==NULL) return NULL;
-    
-    Node* temp = head;
-    head = head->next;
-
-    delete temp;
-    return head;
+    return ans;
+        
 }
 
 int main() {
     setupIO();
 
-    vector<int> arr = {10, 20, 30, 40};
-    Node* head = convertLL(arr);
+    cout << largestPrime(15);
     
-    // head = deleteHead(head);
-    // printLL(head);   
     
     return 0;
 }

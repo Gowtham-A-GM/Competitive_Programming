@@ -1,2 +1,0 @@
-eleteHead(head);
-    printLL(he
