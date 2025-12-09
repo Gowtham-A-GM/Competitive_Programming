@@ -219,7 +219,7 @@ int main() {
     // head = insertHead(head, 100);
     // printLL(head);
     
-    // Insert at HEAD
+    // Insert at TAIL
     // head = insertTail(head, 200);
     // printLL(head);
 
